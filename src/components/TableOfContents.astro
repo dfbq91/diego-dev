@@ -1,0 +1,45 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth >= 1 && h.depth <= 3);
+---
+
+{
+  items.length > 0 && (
+    <nav
+      aria-label="Tabla de contenidos"
+      class="toc mb-10 rounded-lg border border-[var(--border)] bg-[var(--surface)]"
+    >
+      <div class="flex items-center gap-2 border-b border-[var(--border)] px-4 py-2.5 font-mono text-[12px] text-[var(--text-dim)]">
+        <span class="text-[var(--text-faint)]">//</span>
+        <span>contents</span>
+      </div>
+      <ul class="m-0 list-none p-3">
+        {items.map((h) => (
+          <li
+            class={`toc-link ${h.depth === 3 ? 'pl-4 border-l border-[var(--border)]' : ''}`}
+          >
+            <a
+              href={`#${h.slug}`}
+              class="block py-1 px-2 font-mono text-[13px] leading-snug text-[var(--text-dim)] no-underline transition-colors duration-150 hover:text-[var(--accent)]"
+            >
+              {h.depth === 1 && <span class="text-[var(--text-faint)] mr-1.5 select-none"></span>}
+              {h.depth === 2 && <span class="text-[var(--text-faint)] mr-1.5 select-none"></span>}
+              {h.depth === 3 && <span class="text-[var(--text-faint)] mr-1.5 select-none"></span>}
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

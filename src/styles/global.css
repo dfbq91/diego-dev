@@ -434,6 +434,7 @@ html[data-locale='en'] [data-language-content='en'] {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.35;
+  scroll-margin-top: 5rem;
 }
 
 .prose-editorial h1 {
