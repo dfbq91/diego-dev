@@ -29,7 +29,7 @@ Playwright auto-starts the dev server on `localhost:4321` (see `webServer` in co
 
 ## i18n
 
-Locale is query-param based, not file-based: `?lang=en` or `?lang=es`. Default is Spanish. See `src/i18n/i18n.ts`. When adding pages or links, always include the `?lang=` param.
+Locale is query-param based, not file-based: `?lang=en` or `?lang=es`. Default is English. See `src/i18n/i18n.ts`. When adding pages or links, always include the `?lang=` param.
 
 Pages are server-rendered per request, so `?lang=` is honored at runtime. `Base.astro` sets `<html lang>`/`data-locale` server-side — do not add a client-side i18n text override (it causes mixed-language output). Blog post pages resolve their slug per request in `src/pages/blog/[post].astro` (no `getStaticPaths`).
 
