@@ -8,7 +8,7 @@ import { remarkCallouts } from './src/plugins/remark-callouts';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static',
+  output: 'server',
   adapter: cloudflare(),
   markdown: {
     processor: unified({ remarkPlugins: [remarkCallouts] }),

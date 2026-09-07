@@ -6,15 +6,15 @@ import Footer from '../../components/Footer.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import { getLocale, getTranslations } from '../../i18n/i18n';
 
-export async function getStaticPaths() {
-  const allPosts = await getCollection('blog');
-  return allPosts.map((post) => ({
-    params: { post: post.id },
-    props: { post },
-  }));
+const { post: slug } = Astro.params;
+
+const allPosts = await getCollection('blog');
+const post = allPosts.find((p) => p.id === slug);
+
+if (!post) {
+  return new Response(null, { status: 404 });
 }
 
-const { post } = Astro.props;
 const locale = getLocale(Astro.url);
 const t = getTranslations(Astro.url);
 
@@ -54,7 +54,7 @@ function formatDate(date: Date, loc: string): string {
         </h1>
 
         <div class="flex items-center gap-2 font-mono text-[12px] text-[var(--text-faint)]">
-          <span>// author:</span>
+          <span>// {locale === 'en' ? 'author' : 'autor'}:</span>
           <span class="text-[var(--text-bright)]">{post.data.author}</span>
         </div>
       </header>

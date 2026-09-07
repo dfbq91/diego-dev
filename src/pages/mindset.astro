@@ -33,7 +33,7 @@ const count = String(mindset.points.length).padStart(2, '0');
 
       <div class="font-mono text-[12px] text-[var(--text-dim)] text-right hidden sm:block">
         ~/mindset<br />
-        <span class="text-[var(--text-faint)]">{count} principles</span>
+        <span class="text-[var(--text-faint)]">{count} {locale === 'en' ? 'principles' : 'principios'}</span>
       </div>
     </div>
 

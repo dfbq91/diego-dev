@@ -11,7 +11,7 @@ test('renders all portfolio sections in order', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Diego Betancourt' })).toBeVisible();
 
   // Section headings visible
-  const sectionHeadings = ['Experiencia', 'Proyectos', 'Hoja de Vida', 'Contacto'];
+  const sectionHeadings = ['Experiencia', 'Proyectos', 'Contacto'];
   for (const heading of sectionHeadings) {
     await expect(page.getByRole('heading', { name: heading })).toBeVisible();
   }

@@ -43,7 +43,7 @@ function formatDate(date: Date, loc: string): string {
     <div class="flex items-baseline justify-between gap-6 mb-12 pb-5 border-b border-[var(--border)]">
       <div>
         <div class="font-mono text-[12px] text-[var(--text-dim)] tracking-[0.06em]">
-          <span class="text-[var(--accent)] mr-2">07</span>WRITINGS & NOTES
+          <span class="text-[var(--accent)] mr-2">07</span>{locale === 'en' ? 'WRITINGS & NOTES' : 'ESCRITOS Y NOTAS'}
         </div>
         <h1 class="font-mono font-medium text-[clamp(28px,3.5vw,40px)] tracking-[-0.03em] text-[var(--text-bright)] mt-2 mb-0" data-i18n="blog">
           {t.blog.title}
@@ -52,7 +52,7 @@ function formatDate(date: Date, loc: string): string {
 
       <div class="font-mono text-[12px] text-[var(--text-dim)] text-right hidden sm:block">
         ~/blog<br />
-        <span class="text-[var(--accent)]">● published articles</span>
+        <span class="text-[var(--accent)]">● {locale === 'en' ? 'published articles' : 'artículos publicados'}</span>
       </div>
     </div>
 

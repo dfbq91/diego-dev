@@ -1,14 +1,17 @@
 ---
+import { getLocale } from '../i18n/i18n';
+
 interface Props {
   title: string;
   description?: string;
 }
 
 const { title, description = 'Software Engineer Portfolio — Diego Betancourt' } = Astro.props;
+const locale = getLocale(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang={locale} data-locale={locale} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,33 +36,13 @@ const { title, description = 'Software Engineer Portfolio — Diego Betancourt' 
       <slot />
     </div>
 
-    <!-- Interactive scripts: Mouse flashlight & i18n & theme switcher -->
+    <!-- Interactive scripts: Mouse flashlight & theme switcher -->
     <script is:inline>
       // Mouse Torch effect for highlighted dot matrix
       window.addEventListener('pointermove', (e) => {
         document.documentElement.style.setProperty('--mx', `${e.clientX}px`);
         document.documentElement.style.setProperty('--my', `${e.clientY}px`);
       }, { passive: true });
-
-      // Language handling & query param sync
-      const locale = new URLSearchParams(window.location.search).get('lang') === 'es' ? 'es' : 'en';
-      const labels = {
-        es: { about: 'Acerca de Mí', experience: 'Experiencia', projects: 'Proyectos', mindset: 'Mentalidad', chat: 'Chatea con Diego', cv: 'CV', contact: 'Contacto', blog: 'Blog', backToBlog: 'Volver al Blog' },
-        en: { about: 'About Me', experience: 'Experience', projects: 'Projects', mindset: 'Mindset', chat: 'Chat with Diego', cv: 'Resume', contact: 'Contact', blog: 'Blog', backToBlog: 'Back to Blog' },
-      };
-
-      document.documentElement.lang = locale;
-      document.documentElement.dataset.locale = locale;
-      document.querySelectorAll('[data-i18n]').forEach((element) => {
-        const key = element.getAttribute('data-i18n');
-        if (key && labels[locale] && labels[locale][key]) {
-          element.textContent = labels[locale][key];
-        }
-      });
-      document.querySelectorAll('a[href*="lang="]:not([data-locale-link])').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (href) link.setAttribute('href', href.replace(/lang=(es|en)/g, `lang=${locale}`));
-      });
     </script>
   </body>
 </html>

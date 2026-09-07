@@ -7,8 +7,8 @@ export const translations = { es, en } as const;
 
 export function getLocale(url: URL): Locale {
   const param = url.searchParams.get('lang');
-  if (param === 'es') return 'es';
-  return 'en';
+  if (param === 'en') return 'en';
+  return 'es';
 }
 
 export function getTranslations(url: URL) {
