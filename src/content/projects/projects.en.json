@@ -7,6 +7,13 @@
     "repoUrl": null
   },
   {
+    "name": "go-agree",
+    "description": "Platform for generating legal contracts for Colombia, based on legal concepts and AI.",
+    "technologies": ["Next.js", "Supabase", "Netlify", "PostgreSQL", "Agentic AI", "AI SDK Vercel"],
+    "demoUrl": "https://go-agree.netlify.app",
+    "repoUrl": "https://github.com/dfbq91/go-agree"
+  },
+  {
     "name": "Diego Betancourt Portfolio",
     "description": "Personal portfolio built with Astro and Tailwind CSS, applying spec-driven development with end-to-end tests (Playwright) and Cloudflare deployment. Features a RAG-powered chat using Workers AI.",
     "technologies": ["Astro", "TypeScript", "Playwright", "Cloudflare Workers AI", "RAG"],
